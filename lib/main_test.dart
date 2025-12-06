@@ -5,7 +5,7 @@ import 'package:rentverse/core/services/service_locator.dart';
 import 'package:rentverse/features/auth/presentation/pages/profile_pages.dart';
 import 'package:rentverse/role/tenant/presentation/pages/chat.dart';
 import 'package:rentverse/role/tenant/presentation/pages/home.dart';
-import 'package:rentverse/role/tenant/presentation/pages/property.dart';
+import 'package:rentverse/role/tenant/presentation/pages/property/property.dart';
 import 'package:rentverse/role/tenant/presentation/pages/rent.dart';
 
 Future<void> main() async {

@@ -3,8 +3,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../cubit/city/cubit.dart';
-import '../cubit/city/state.dart';
+import '../../cubit/city/cubit.dart';
+import '../../cubit/city/state.dart';
 
 class CityCarousel extends StatelessWidget {
   const CityCarousel({super.key});

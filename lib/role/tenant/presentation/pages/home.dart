@@ -5,12 +5,12 @@ import 'package:rentverse/common/widget/custom_app_bar.dart';
 import 'package:rentverse/role/tenant/presentation/cubit/get_user/cubit.dart';
 import 'package:rentverse/role/tenant/presentation/cubit/get_user/state.dart';
 import 'package:rentverse/role/tenant/presentation/cubit/list_property/cubit.dart';
-import 'package:rentverse/role/tenant/presentation/widget/city_carousel.dart';
-import 'package:rentverse/role/tenant/presentation/widget/list_property.dart';
-import 'package:rentverse/role/tenant/presentation/widget/search_and_sort_widget.dart';
+import 'package:rentverse/role/tenant/presentation/widget/home/city_carousel.dart';
+import 'package:rentverse/role/tenant/presentation/widget/property/list_property.dart';
+import 'package:rentverse/role/tenant/presentation/widget/home/search_and_sort_widget.dart';
 import 'package:rentverse/features/property/domain/usecase/get_properties_usecase.dart';
 
-import '../widget/carousel_custom.dart';
+import '../widget/home/carousel_custom.dart';
 
 class TenantHomePage extends StatelessWidget {
   const TenantHomePage({super.key});

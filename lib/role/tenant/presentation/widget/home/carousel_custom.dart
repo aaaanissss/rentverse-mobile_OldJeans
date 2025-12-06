@@ -2,8 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../cubit/banner/cubit.dart';
-import '../cubit/banner/state.dart';
+import '../../cubit/banner/cubit.dart';
+import '../../cubit/banner/state.dart';
 
 class CarouselCustom extends StatelessWidget {
   const CarouselCustom({super.key});

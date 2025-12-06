@@ -95,16 +95,6 @@ Widget _buildPropertyList(
           return _buildPropertyItem(property);
         },
       ),
-      if (!hasMore && visibleItems.isNotEmpty)
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 8),
-          child: Center(
-            child: Text(
-              'No more properties',
-              style: TextStyle(color: Colors.grey, fontSize: 12),
-            ),
-          ),
-        ),
     ],
   );
 }

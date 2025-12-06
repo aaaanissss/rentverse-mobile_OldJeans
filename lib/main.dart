@@ -16,7 +16,7 @@ import 'package:rentverse/role/lanlord/presentation/pages/dashboard.dart';
 import 'package:rentverse/role/lanlord/presentation/pages/history.dart';
 import 'package:rentverse/role/tenant/presentation/pages/chat.dart';
 import 'package:rentverse/role/tenant/presentation/pages/home.dart';
-import 'package:rentverse/role/tenant/presentation/pages/property.dart';
+import 'package:rentverse/role/tenant/presentation/pages/property/property.dart';
 import 'package:rentverse/role/tenant/presentation/pages/rent.dart';
 import 'package:rentverse/common/screen/navigation_container.dart';
 
