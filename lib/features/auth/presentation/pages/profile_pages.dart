@@ -48,75 +48,75 @@ class _ProfileView extends StatelessWidget {
       return SafeArea(
           child: Stack(children: [
         Container(color: Colors.white),
-
-
         SizedBox(
             height: 260,
             width: double.infinity,
             child: const _HeaderBackground()),
+        RefreshIndicator(
+            onRefresh: () async {
+              await context.read<ProfileCubit>().loadProfile();
+            },
+            child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                padding: const EdgeInsets.fromLTRB(16, 140, 16, 24),
+                child: Column(children: [
+                  _ProfileHeader(
+                      name: displayName,
+                      role: roleLabel,
+                      avatarUrl: user.avatarUrl,
+                      isVerified: user.isVerified),
+                  const SizedBox(height: 20),
+                  _ProfileMenuCard(items: [
+                    _ProfileMenuItem(
+                        icon: LucideIcons.edit,
+                        label: 'Edit Profile',
+                        badgeCount: 3,
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (_) => const EditProfileScreen()));
+                        }),
+                    _ProfileMenuItem(
+                        icon: LucideIcons.star,
+                        label: 'Trust Index',
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (_) => const TrustIndexPage()));
+                        }),
+                    _ProfileMenuItem(
+                        icon: LucideIcons.fileText,
+                        label: 'Disputes',
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (_) => const MyDisputesPage()));
+                        }),
+                    _ProfileMenuItem(
+                        icon: LucideIcons.wallet,
+                        label: 'My Wallet',
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (_) => const MyWalletPage()));
+                        })
+                  ]),
+                  const SizedBox(height: 12),
+                  _ProfileMenuCard(items: [
+                    const _ProfileMenuItem(
+                        icon: LucideIcons.bell, label: 'Notifications'),
+                    const _ProfileMenuItem(
+                        icon: LucideIcons.lock, label: 'Security'),
+                    const _ProfileMenuItem(
+                        icon: LucideIcons.globe, label: 'Language'),
+                    _ProfileMenuItem(
+                        icon: LucideIcons.logOut,
+                        label: 'Logout',
+                        iconColor: Colors.red,
+                        valueColor: Colors.red,
+                        onTap: () async {
+                          await sl<LogoutUseCase>()();
 
-
-        SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(16, 140, 16, 24),
-            child: Column(children: [
-              _ProfileHeader(
-                  name: displayName,
-                  role: roleLabel,
-                  avatarUrl: user.avatarUrl,
-                  isVerified: user.isVerified),
-              const SizedBox(height: 20),
-              _ProfileMenuCard(items: [
-                _ProfileMenuItem(
-                    icon: LucideIcons.edit,
-                    label: 'Edit Profile',
-                    badgeCount: 3,
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => const EditProfileScreen()));
-                    }),
-                _ProfileMenuItem(
-                    icon: LucideIcons.star,
-                    label: 'Trust Index',
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => const TrustIndexPage()));
-                    }),
-                _ProfileMenuItem(
-                    icon: LucideIcons.fileText,
-                    label: 'Disputes',
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => const MyDisputesPage()));
-                    }),
-                _ProfileMenuItem(
-                    icon: LucideIcons.wallet,
-                    label: 'My Wallet',
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => const MyWalletPage()));
-                    })
-              ]),
-              const SizedBox(height: 12),
-              _ProfileMenuCard(items: [
-                const _ProfileMenuItem(
-                    icon: LucideIcons.bell, label: 'Notifications'),
-                const _ProfileMenuItem(
-                    icon: LucideIcons.lock, label: 'Security'),
-                const _ProfileMenuItem(
-                    icon: LucideIcons.globe, label: 'Language'),
-                _ProfileMenuItem(
-                    icon: LucideIcons.logOut,
-                    label: 'Logout',
-                    iconColor: Colors.red,
-                    valueColor: Colors.red,
-                    onTap: () async {
-                      await sl<LogoutUseCase>()();
-
-
-                      context.read<AuthCubit>().checkAuthStatus();
-                    })
-              ])
-            ]))
+                          context.read<AuthCubit>().checkAuthStatus();
+                        })
+                  ])
+                ])))
       ]));
     });
   }
@@ -167,7 +167,6 @@ class _ProfileHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(alignment: Alignment.bottomCenter, children: [
       Column(children: [
-
         Stack(children: [
           CircleAvatar(
               radius: 48,
@@ -198,16 +197,11 @@ class _ProfileHeader extends StatelessWidget {
           Text(role,
               style: TextStyle(color: Colors.grey.shade600, fontSize: 12)),
         const SizedBox(height: 6),
-
-
         Row(mainAxisSize: MainAxisSize.min, children: [
-
           GestureDetector(
               onTap: () async {
-
                 await Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => const EditProfileScreen()));
-
 
                 if (context.mounted) {
                   final cubit = context.read<ProfileCubit>();
@@ -220,16 +214,12 @@ class _ProfileHeader extends StatelessWidget {
                       color: Colors.white, shape: BoxShape.circle),
                   child: Icon(LucideIcons.edit,
                       size: 14, color: appSecondaryColor))),
-
           const SizedBox(width: 8),
-
           Icon(isVerified ? LucideIcons.badgeCheck : LucideIcons.alertCircle,
               size: 14,
               color:
                   isVerified ? Colors.green.shade600 : Colors.orange.shade700),
           const SizedBox(width: 6),
-
-
           Text(isVerified ? 'Verified' : 'Not verified',
               style: TextStyle(
                   fontSize: 12,
