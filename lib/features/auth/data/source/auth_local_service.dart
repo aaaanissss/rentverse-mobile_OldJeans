@@ -23,9 +23,10 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
 
   AuthLocalDataSourceImpl(this._sharedPreferences);
 
+  // Fix saveToken for Access token missing
   @override
   Future<void> saveToken(String token) async {
-    await _sharedPreferences.setString("TOKEN_KEY", " $token");
+    await _sharedPreferences.setString(TOKEN_KEY, token.trim());
   }
 
   @override
@@ -33,9 +34,10 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
     required String accessToken,
     String? refreshToken,
   }) async {
-    await _sharedPreferences.setString("TOKEN_KEY", " $accessToken");
+    // Fix saveToken for Access token missing
+    await _sharedPreferences.setString(TOKEN_KEY, accessToken.trim());
     if (refreshToken != null && refreshToken.isNotEmpty) {
-      await _sharedPreferences.setString(REFRESH_TOKEN_KEY, refreshToken);
+      await _sharedPreferences.setString(REFRESH_TOKEN_KEY, refreshToken.trim());
     }
   }
 
